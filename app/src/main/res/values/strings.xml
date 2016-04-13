@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Interaje01</string>
+    <string name="title">
+        Bem vindo ao jogo.
+        Adivinhe que número estou pensando
+    </string>
+    <string name="guessBtn">Chutar</string>
+    <string name="new_game">Novo Jogo</string>
+    <string name="numberGuessGame">Acerte o número!</string>
+    <string name="btnSPSGame">Pedra, papel, tesoura</string>
+    <string name="title_SPS_game">Escolha e vença a cpu!</string>
+    <string name="cpuResponse">Resposta do computador:</string>
+    <string name="paper">Papel</string>
+    <string name="stone">Pedra</string>
+    <string name="scissors">Tesoura</string>
+    <string name="same_result">Mesmo Resultado!</string>
+    <string name="you_win">Você Ganhou!</string>
+    <string name="you_lose">Você Perdeu!</string>
+    <string name="cpu_paper_response">Resultado da Cpu: Papel</string>
+    <string name="cpu_stone_response">Resultado da Cpu: Pedra</string>
+    <string name="cpu_scissors_response">Resultado da Cpu: Tesoura</string>
+</resources>

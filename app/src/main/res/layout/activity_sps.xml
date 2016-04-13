@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.com.interaje.interaje01.SPSActivity">
+
+    <TextView
+        android:id="@+id/title_SPS_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_SPS_game" />
+
+    <LinearLayout
+        android:id="@+id/responseLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_SPS_game"
+        android:layout_margin="32dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/paper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/paper" />
+
+        <Button
+            android:id="@+id/stone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stone" />
+
+        <Button
+            android:id="@+id/scissors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scissors" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/cpuResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/responseLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cpuResult"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="64dp"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
