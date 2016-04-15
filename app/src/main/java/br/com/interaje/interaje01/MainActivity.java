@@ -1,5 +1,6 @@
 package br.com.interaje.interaje01;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView title;
     private EditText numberGuess;
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.title);
         numberGuess = (EditText) findViewById(R.id.numberGuess);
         confirm = (Button) findViewById(R.id.btnConfirm);
+
+        confirm.setOnClickListener(this);
+
         newGame = (Button) findViewById(R.id.newGame);
         randomNumber = (int) (Math.random() * 10);
 
@@ -52,5 +56,18 @@ public class MainActivity extends AppCompatActivity {
                 numberGuess.setText("");
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.btnConfirm:
+                //faz algo
+                Intent intent = new Intent(this, MainActivity.class);
+                break;
+
+        }
+
     }
 }
