@@ -10,15 +10,36 @@
     tools:context="br.com.interaje.interaje01.InsertProductActivity">
 
     <EditText
+        android:hint="Nome do produto"
         android:id="@+id/productName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
 
     <EditText
-        android:layout_below="@id/productName"
+        android:hint="Preço do produto"
         android:id="@+id/productPrice"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/productName"
+        android:layout_marginTop="16dp" />
 
+    <EditText
+        android:hint="Categoria do produto"
+        android:id="@+id/productCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/productPrice"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnInsertProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productCategory"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:onClick="salvar"
+        android:text="@string/insert_product" />
 
 </RelativeLayout>

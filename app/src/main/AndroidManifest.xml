@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.interaje.interaje01">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,15 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".MenuActivity">
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".SPSActivity" />
+        <activity
+            android:name=".InsertProductActivity"
+            android:label="@string/insert_product_title" />
+        <activity android:name=".examples.ExampleToast">
+        </activity>
+        <activity android:name=".AsyncActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SPSActivity" />
-        <activity android:name=".InsertProductActivity"></activity>
     </application>
 
 </manifest>

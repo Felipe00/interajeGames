@@ -19,4 +19,8 @@
     <string name="cpu_paper_response">Resultado da Cpu: Papel</string>
     <string name="cpu_stone_response">Resultado da Cpu: Pedra</string>
     <string name="cpu_scissors_response">Resultado da Cpu: Tesoura</string>
+    <string name="insert_product_title">Cadastro de produto</string>
+    <string name="insert_product">Cadastrar</string>
+    <string name="success_register">Cadastrado com sucesso!</string>
+    <string name="fail_register">Não foi possível cadastrar o produto</string>
 </resources>
