@@ -5,9 +5,15 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -17,6 +23,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -24,14 +31,75 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.entity.StringEntity;
+
 public class AsyncActivity extends AppCompatActivity {
+
+    private TextView coxinha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_async);
 
-        new AsyncTaskCoxinha().execute();
+        coxinha = (TextView) findViewById(R.id.coxinha);
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setMaxRetriesAndTimeout(1, 10);
+
+        StringEntity entity = null;
+        JSONObject jsonObject = new JSONObject();
+        JSONObject mainJson = new JSONObject();
+        try {
+            jsonObject.put("name", "Coxinha Limpeza");
+            mainJson.put("coxinha", jsonObject);
+            entity = new StringEntity(mainJson.toString());
+        } catch (JSONException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        client.post(this, "http://192.168.1.234:3000/coxinhas/setCoxinha",
+                entity, "application/json", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                Log.d("-->>", new String(responseBody));
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable error) {
+                Log.d("Erro -->>", new String(errorResponse));
+            }
+        });
+
+        client.get("http://192.168.1.234:3000/coxinhas/getCoxinhas", new AsyncHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+                try {
+                    JSONArray coxinhaArrayJson = new JSONArray(new String(response));
+                    String names = "";
+
+                    for (int i = 0; i < coxinhaArrayJson.length(); i++) {
+                        JSONObject coxinhaJson = coxinhaArrayJson.getJSONObject(i);
+                        names = names.concat(coxinhaJson.getString("name") + "\n");
+                    }
+
+                    coxinha.setText(names);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+                Log.d("Erro -->>", new String(errorResponse));
+            }
+
+        });
+
+        //new AsyncTaskCoxinha().execute();
     }
 
     private class AsyncTaskCoxinha extends AsyncTask<Void, Void, Void> {
